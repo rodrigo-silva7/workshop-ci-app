@@ -1,4 +1,4 @@
-name: Go
+name: Build & Deploy
 
 on:
   push:
@@ -24,9 +24,15 @@ jobs:
       with:
         name: workshop-ci-app-dev
         path: ./workshop-ci-app
-        
-#    - name: Test
-#      run: go test -v ./...
+  test:
+    steps:
+    - name: Test
+      #  run: go test -v ./...
+        run: echo "Rodando testes"
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
 
     - name: Heroku Action
       uses: CDNievas/heroku-action@v1.0
