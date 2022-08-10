@@ -11,7 +11,7 @@ func main() {
    http.HandleFunc("/", Index)
    http.HandleFunc("/status", Status)
 
-   http.ListenAndServe(":8080", nil)
+   http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 }
 
 func Index(w http.ResponseWriter, r *http.Request){
