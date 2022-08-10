@@ -24,13 +24,6 @@ jobs:
       with:
         name: workshop-ci-app-dev
         path: ./workshop-ci-app
-  test:
-    runs-on: ubuntu-latest  
-    steps:
-
-    - name: Test
-      #  run: go test -v ./...
-        run: echo "Rodando testes"
 
   deploy:
     runs-on: ubuntu-latest
