@@ -1,0 +1,36 @@
+name: Go
+
+on:
+  push:
+    branches: [ "homolog" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.19
+
+    - name: Build
+      run: go build
+      
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: workshop-ci-app-dev
+        path: ./workshop-ci-app
+        
+#    - name: Test
+#      run: go test -v ./...
+
+    - name: Heroku Action
+      uses: CDNievas/heroku-action@v1.0
+      with:
+        heroku_api_key: ${{Secrets.HEROKU_API_KEY}}
+        heroku_email: rodrigo.silva7@yahoo.com.br
+        heroku_app_name: workshop-ci-web-app-dev
