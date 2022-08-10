@@ -30,6 +30,11 @@ jobs:
     needs: build
     steps:
 
+    - name: Download math result for job 1
+      uses: actions/download-artifact@v3
+      with:
+        name: workshop-ci-app-dev
+
     - name: Heroku Action
       uses: CDNievas/heroku-action@v1.0
       with:
