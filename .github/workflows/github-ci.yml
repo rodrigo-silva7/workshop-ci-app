@@ -32,7 +32,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Heroku Action
-      uses: CDNievas/heroku-action@v1.0
+      uses: akhileshns/heroku-deploy@v3.12.12
       with:
         heroku_api_key: ${{Secrets.HEROKU_API_KEY}}
         heroku_email: rodrigo.silva7@yahoo.com.br
