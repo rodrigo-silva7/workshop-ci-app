@@ -25,6 +25,7 @@ jobs:
         name: workshop-ci-app-dev
         path: ./workshop-ci-app
   test:
+    runs-on: ubuntu-latest  
     steps:
 
     - name: Test
