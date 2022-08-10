@@ -26,6 +26,7 @@ jobs:
         path: ./workshop-ci-app
   test:
     steps:
+
     - name: Test
       #  run: go test -v ./...
         run: echo "Rodando testes"
