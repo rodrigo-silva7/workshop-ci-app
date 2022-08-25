@@ -48,7 +48,7 @@ jobs:
       with:
         heroku_api_key: ${{Secrets.HEROKU_API_KEY}}
         heroku_email: rodrigo.silva7@yahoo.com.br
-        heroku_app_name: workshop-ci
+        heroku_app_name: devsnorte-iac-example-app
 
   deploy-flyio:
     runs-on: ubuntu-latest
