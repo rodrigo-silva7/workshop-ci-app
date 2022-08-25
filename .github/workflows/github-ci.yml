@@ -49,3 +49,17 @@ jobs:
         heroku_api_key: ${{Secrets.HEROKU_API_KEY}}
         heroku_email: rodrigo.silva7@yahoo.com.br
         heroku_app_name: workshop-ci-web-app-dev
+
+  deploy-digital-ocean:
+    runs-on: ubuntu-latest
+    needs: test
+    name: Deploy App
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: DigitalOcean App Platform deployment
+      uses: digitalocean/app_action@main
+      with:
+        app_name: workshop-ci
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
