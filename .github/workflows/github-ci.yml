@@ -25,9 +25,15 @@ jobs:
         name: workshop-ci-app-dev
         path: ./workshop-ci-app
 
-  deploy:
+  test: 
     runs-on: ubuntu-latest
     needs: build
+    steps:
+      - run: go test -v **/** 
+
+  deploy-heroku:
+    runs-on: ubuntu-latest
+    needs: test
     steps:
     - uses: actions/checkout@v3
 
