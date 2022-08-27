@@ -1,30 +1,15 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"os"
-   "encoding/json"
+   "workshop-ci-app/controller"
 )
 
 func main() {
-   http.HandleFunc("/", Index)
-   http.HandleFunc("/status", Status)
+   http.HandleFunc("/", controller.Index)
+   http.HandleFunc("/status", controller.Status)
 
-   http.ListenAndServe(":8080", nil)
+   http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 }
 
-func Index(w http.ResponseWriter, r *http.Request){
-   fmt.Fprintf(w, "Olá Devs Norte!\n\nAmbiente de execução: [%s]", os.Getenv("ENVIRONMENT"))
-}
-
-func Status(w http.ResponseWriter, r *http.Request){
-   w.WriteHeader(200)
-   w.Header().Set("Content-Type","application/json")
-   resp := make(map[string]string)
-
-   resp["status"] = "UP"
-
-   jsonResp, _ := json.Marshal(resp)
-   w.Write(jsonResp)
-}
